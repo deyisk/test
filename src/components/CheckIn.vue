@@ -2,13 +2,16 @@
     <div>
       <TextComponent :config="textConfig" />
       <InputComponent :config="inputConfig" @input="handleInputChange" />
+  
+      <button @click="goBack" style="margin-left: -70%; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
+        Zurück
+      </button>
     </div>
   </template>
   
   <script>
   import TextComponent from '@/components/TextComponent.vue';
   import InputComponent from '@/components/InputComponent.vue';
-
   
   export default {
     name: 'CheckIn',
@@ -62,6 +65,9 @@
     methods: {
       handleInputChange(value) {
         console.log("Input value changed:", value);
+      },
+      goBack() {
+        this.$router.go(-1); 
       }
     }
   };
