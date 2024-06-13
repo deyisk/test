@@ -112,7 +112,7 @@ export default {
         default:
           if (button.startsWith("{") && button.endsWith("}")) {
             // Özel tuşlar için ek işlemler
-          } else {
+          } else if (!(button === "{ctrl}" && this.ctrlPressed)) {
             this.$emit("onChange", this.input + button);
           }
           break;
@@ -126,7 +126,7 @@ export default {
       if (this.layouts[lang]) {
         this.keyboardLayout = this.layouts[lang];
       } else {
-        this.keyboardLayout = this.layouts['de']; // Dil bulunamazsa varsayılan deutsch
+        this.keyboardLayout = this.layouts['en']; // Dil bulunamazsa varsayılan İngilizce
       }
     },
     toggleFullscreen() {
