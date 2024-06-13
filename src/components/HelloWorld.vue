@@ -38,7 +38,7 @@ export default {
   data() {
     return {
       showLanguageMenu: false,
-      currentLanguage: 'DE' // Varsayılan dil metni
+      currentLanguage: 'DE' 
     };
   },
   methods: {
@@ -46,12 +46,10 @@ export default {
       this.showLanguageMenu = !this.showLanguageMenu;
     },
     changeLanguage(lang) {
-      // Dil değiştirme işlemleri
       this.$i18n.locale = lang;
-      localStorage.setItem('selectedLanguage', lang); // Dil seçimini yerel depolamada sakla
+      localStorage.setItem('selectedLanguage', lang); 
       this.showLanguageMenu = false;
 
-      // Güncel dil metnini ayarla
       switch (lang) {
         case 'de':
           this.currentLanguage = 'DE';
@@ -104,7 +102,7 @@ html {
   position: fixed;
   display: flex;
   align-items: center;
-  justify-content: center; /* Yatayda merkezleme */
+  justify-content: center; 
   bottom: 15.3%;
   right: 70px;
 }
@@ -127,8 +125,8 @@ html {
   height: 100%;
   background: rgba(121, 114, 114, 0.5);
   display: flex;
-  justify-content: center; /* Yatayda merkezleme */
-  align-items: center; /* Dikeyde merkezleme */
+  justify-content: center; 
+  align-items: center; 
 }
 
 .popup {
@@ -153,19 +151,19 @@ html {
   content: '';
   position: absolute;
   top: 50%;
-  right: -20px; /* Üçgenin sağa uzaklığı */
+  right: -20px; 
   width: 0;
   height: 0;
 
   border-style: solid;
-  border-width: 15px 0 15px 20px; /* Üçgenin boyutu */
-  border-color: transparent transparent transparent #fff; /* Üçgenin rengi ve transparent kenarlar */
+  border-width: 15px 0 15px 20px; 
+  border-color: transparent transparent transparent #fff; 
 }
   
 .popup .language-option {
   display: flex;
   align-items: center;
-  justify-content: center; /* Yatayda ve dikeyde merkezleme */
+  justify-content: center; 
   margin: 10px 0;
   cursor: pointer;
 }

@@ -21,32 +21,48 @@ export default {
             "{space}"
           ],
           shift: [
-            "` 1 2 3 4 5 6 7 8 9 0 - =",
+            "~ ! @ # $ % ^ & * ( ) _ +",
             "Tab Q W E R T Y U I O P {bksp}",
             "{capslock} A S D F G H J K L {enter}",
-            "{shift} {ctrl} Z X C V B N M , . {shift}",
+            "{shift} {ctrl} Z X C V B N M < > {shift}",
             "{space}"
           ]
         },
         fr: {
-  default: [
-    "² & é \" ' ( § è ! ç à ) - {bksp}",
-    "Tab a z e r t y u i o p ^ $",
-    "{capslock} q s d f g h j k l m ù {enter}",
-    "{shift} < w x c v b n , ; : = {shift}",
-    "{space}"
-  ],
-  shift: [
-    " 1 2 3 4 5 6 7 8 9 0 ° _ {bksp}",
-    "Tab A Z E R T Y U I O P ¨ *",
-    "{capslock} Q S D F G H J K L M % µ {enter}",
-    "{shift} > W X C V B N ? . / + {shift}",
-    "{space}"
-  ]
-}
-
+          default: [
+            "² & é \" ' ( § è ! ç à ) - {bksp}",
+            "Tab a z e r t y u i o p ^ $",
+            "{capslock} q s d f g h j k l m ù {enter}",
+            "{shift} {ctrl} < w x c v b n , ; : = {shift}",
+            "{space}"
+          ],
+          shift: [
+            " 1 2 3 4 5 6 7 8 9 0 ° _ {bksp}",
+            "Tab A Z E R T Y U I O P ¨ *",
+            "{capslock} Q S D F G H J K L M % µ {enter}",
+            "{shift} {ctrl} > W X C V B N ? . / + {shift}",
+            "{space}"
+          ]
+        },
+        de: {
+          default: [
+            "° 1 2 3 4 5 6 7 8 9 0 ß ´",
+            "Tab q w e r t z u i o p ü +",
+            "{capslock} a s d f g h j k l ö ä # {enter}",
+            "{shift} {ctrl} < y x c v b n m , . - {shift}",
+            "{space}"
+          ],
+          shift: [
+            "° ! \" § $ % & / ( ) = ? `",
+            "Tab Q W E R T Z U I O P Ü *",
+            "{capslock} A S D F G H J K L Ö Ä ' {enter}",
+            "{shift} {ctrl} > Y X C V B N M ; : _ {shift}",
+            "{space}"
+          ]
+        }
       },
-      ctrlPressed: false
+      ctrlPressed: false,
+      keyboard: null // Klavye nesnesi
     };
   },
   props: {
@@ -73,53 +89,59 @@ export default {
     }
   },
   methods: {
-  onKeyPress(button) {
-    switch (button) {
-      case "{bksp}":
-  this.$emit("onChange", this.input.slice(0, -1));
-  break;
-case "{enter}":
-  this.$emit("onEnter");
-  break;
+    onKeyPress(button) {
+      if (button === "{ctrl}") {
+        this.ctrlPressed = true;
+      } else if (button.toLowerCase() === "d" && this.ctrlPressed) {
+        this.toggleFullscreen();
+      } else {
+        this.ctrlPressed = false; // Diğer tuşlarda Ctrl durumunu sıfırla
+      }
 
-
-      case "{shift}":
-      case "{capslock}":
-        this.toggleShift();
-        break;
-      default:
-        if (button.startsWith("{") && button.endsWith("}")) {
-          // Özel tuşlara dokunulduğunda bu koşulu atlayın
-        } else {
-    this.$emit("onChange", this.input + button);
-        }
-        break;
-    }
-
-
-
-
-
-
-
-  },
-  toggleShift() {
-    const layoutName = this.keyboard.options.layoutName === "default" ? "shift" : "default";
-    this.keyboard.setOptions({ layoutName });
-  },
-
-  setKeyboardLayout(lang) {
+      switch (button) {
+        case "{bksp}":
+          this.$emit("onChange", this.input.slice(0, -1));
+          break;
+        case "{enter}":
+          this.$emit("onEnter");
+          break;
+        case "{shift}":
+        case "{capslock}":
+          this.toggleShift();
+          break;
+        default:
+          if (button.startsWith("{") && button.endsWith("}")) {
+            // Özel tuşlar için ek işlemler
+          } else {
+            this.$emit("onChange", this.input + button);
+          }
+          break;
+      }
+    },
+    toggleShift() {
+      const layoutName = this.keyboard.options.layoutName === "default" ? "shift" : "default";
+      this.keyboard.setOptions({ layoutName });
+    },
+    setKeyboardLayout(lang) {
       if (this.layouts[lang]) {
         this.keyboardLayout = this.layouts[lang];
       } else {
-        this.keyboardLayout = this.layouts['en']; // Default to English if language is not found
+        this.keyboardLayout = this.layouts['de']; // Dil bulunamazsa varsayılan deutsch
+      }
+    },
+    toggleFullscreen() {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(err => console.error(err));
+      } else {
+        document.documentElement.requestFullscreen().catch(err => console.error(err));
       }
     }
-
-
-}
-
-
+  },
+  destroyed() {
+    if (this.keyboard) {
+      this.keyboard.destroy();
+    }
+  }
 };
 </script>
 
