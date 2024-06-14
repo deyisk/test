@@ -57,7 +57,7 @@
         },
         secondLineStyle: {
           fontSize: '30px', 
-          margin: '10px',
+          margin: '11px',
           marginLeft:'85px' 
         }
       };
