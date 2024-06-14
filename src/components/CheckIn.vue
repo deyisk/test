@@ -3,8 +3,12 @@
       <TextComponent :config="textConfig" />
       <InputComponent :config="inputConfig" @input="handleInputChange" />
   
-      <button @click="goBack" style="margin-left: -70%; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
+      <button @click="goBack" style="margin-left: -45%; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
         Zurück
+      </button>
+      
+      <button @click="goForward" style="margin-right: 150px; float: inline-end; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
+        Weiter
       </button>
     </div>
   </template>
@@ -68,6 +72,9 @@
       },
       goBack() {
         this.$router.go(-1); 
+      },
+      goForward() {
+        this.$router.push({ name: 'Unterweisungen' });
       }
     }
   };

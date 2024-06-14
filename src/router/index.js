@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import CheckIn from '@/components/CheckIn.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
-
+import Unterweisungen from '@/components/Unterweisungen.vue';
 
 
 Vue.use(VueRouter);
@@ -19,6 +19,13 @@ const routes = [
     name: 'HelloWorld',
     component: HelloWorld
   },
+
+  {
+    path: '/unterweisungen',
+    name: 'Unterweisungen',
+    component: Unterweisungen
+  },
+
 
 
 ];

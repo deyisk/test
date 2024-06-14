@@ -62,7 +62,7 @@ export default {
         }
       },
       ctrlPressed: false,
-      keyboard: null // Klavye nesnesi
+      keyboard: null 
     };
   },
   props: {
@@ -95,7 +95,7 @@ export default {
       } else if (button.toLowerCase() === "d" && this.ctrlPressed) {
         this.toggleFullscreen();
       } else {
-        this.ctrlPressed = false; // Diğer tuşlarda Ctrl durumunu sıfırla
+        this.ctrlPressed = false; 
       }
 
       switch (button) {
@@ -111,7 +111,6 @@ export default {
           break;
         default:
           if (button.startsWith("{") && button.endsWith("}")) {
-            // Özel tuşlar için ek işlemler
           } else if (!(button === "{ctrl}" && this.ctrlPressed)) {
             this.$emit("onChange", this.input + button);
           }
@@ -126,7 +125,7 @@ export default {
       if (this.layouts[lang]) {
         this.keyboardLayout = this.layouts[lang];
       } else {
-        this.keyboardLayout = this.layouts['en']; // Dil bulunamazsa varsayılan İngilizce
+        this.keyboardLayout = this.layouts['en']; 
       }
     },
     toggleFullscreen() {

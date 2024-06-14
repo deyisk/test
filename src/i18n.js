@@ -22,7 +22,7 @@ const messages = {
 };
 
 const i18n = new VueI18n({
-  locale: 'de', // Default language
+  locale: 'de', 
   messages,
 });
 
