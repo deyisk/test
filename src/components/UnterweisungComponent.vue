@@ -100,6 +100,10 @@
         </button>
       </div>
     </div>
+
+    <button @click="goBack" style="margin-left: 80px; float: inline-start; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
+        Zurück
+      </button>
     <button @click="goForward" style="margin-right: 80px; float: inline-end; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
       Weiter
     </button>
@@ -189,7 +193,10 @@ export default {
     },
     goForward() {
       this.$router.push({ name: 'VideoCall' });
-    }
+    },
+    goBack() {
+        this.$router.go(-1); 
+      },
   }
 };
 </script>
