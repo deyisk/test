@@ -57,7 +57,7 @@
             marginBottom: '20px'
           },
           validate: value => !!value, 
-          errorMessage: 'Dieses Feld darf nicht leer sein!',
+          errorMessage: 'Nicht berechtigt - bitte am Empfang melden',
           keyboardConfig: {
             layout: 'qwerty',
             alwaysOpen: false,
