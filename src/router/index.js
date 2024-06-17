@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import CheckIn from '@/components/CheckIn.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import UnterweisungComponent from '@/components/UnterweisungComponent.vue';
-
+import VideoCall from '@/components/VideoCall.vue';
 
 Vue.use(VueRouter);
 
@@ -24,6 +24,11 @@ const routes = [
     path: '/unterweisungen',
     name: 'UnterweisungComponent',
     component: UnterweisungComponent
+  },
+  {
+    path: '/videocall',
+    name: 'VideoCall',
+    component: VideoCall
   },
 
 

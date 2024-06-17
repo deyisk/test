@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <canvas ref="signaturePad" width="800" height="250" :style="signatureBoxStyle"></canvas>
+
 
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
