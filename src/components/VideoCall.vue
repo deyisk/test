@@ -13,6 +13,10 @@
         <h1>arvia</h1>
         <!-- Arvia Kodu -->
       </div>
+
+      <button @click="goBack" style="margin:auto; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
+        Zurück
+      </button>
     </div>
   </template>
   
@@ -62,7 +66,15 @@
       setTimeout(() => {
         this.showMessage = false;
       }, 2000);
-    }
+    },
+    methods:{
+        goBack() {
+  this.$router.push({ name: 'UnterweisungComponent' });
+},
+    },
+
+
+
   };
   </script>
   
