@@ -88,60 +88,70 @@ export default {
       this.keyboard.setOptions({ layout: this.keyboardLayout });
     }
   },
-  methods: {
-    onKeyPress(button) {
-      if (button === "{ctrl}") {
-        this.ctrlPressed = true;
-      } else if (button.toLowerCase() === "d" && this.ctrlPressed) {
-        this.toggleFullscreen();
-      } else {
-        this.ctrlPressed = false; 
-      }
 
-      switch (button) {
-        case "{bksp}":
-          this.$emit("onChange", this.input.slice(0, -1));
-          break;
-        case "{enter}":
-          this.$emit("onEnter");
-          break;
-        case "{shift}":
-        case "{capslock}":
-          this.toggleShift();
-          break;
-        default:
-          if (button.startsWith("{") && button.endsWith("}")) {
-          } else if (!(button === "{ctrl}" && this.ctrlPressed)) {
-            this.$emit("onChange", this.input + button);
-          }
-          break;
-      }
-    },
-    toggleShift() {
-      const layoutName = this.keyboard.options.layoutName === "default" ? "shift" : "default";
-      this.keyboard.setOptions({ layoutName });
-    },
-    setKeyboardLayout(lang) {
-      if (this.layouts[lang]) {
-        this.keyboardLayout = this.layouts[lang];
-      } else {
-        this.keyboardLayout = this.layouts['en']; 
-      }
-    },
-    toggleFullscreen() {
-      if (document.fullscreenElement) {
-        document.exitFullscreen().catch(err => console.error(err));
-      } else {
-        document.documentElement.requestFullscreen().catch(err => console.error(err));
-      }
+  methods: {
+  onKeyPress(button) {
+    if (button === "{ctrl}") {
+      this.ctrlPressed = true;
+    } else if (button.toLowerCase() === "d" && this.ctrlPressed) {
+      this.toggleFullscreen();
+    } else {
+      this.ctrlPressed = false; 
+    }
+
+    switch (button) {
+      case "{bksp}":
+        this.$emit("onChange", this.input.slice(0, -1));
+        break;
+      case "{enter}":
+        this.$emit("onEnter");
+        break;
+      case "{shift}":
+      case "{capslock}":
+        this.toggleShift();
+        break;
+      default:
+        if (!(button.startsWith("{") && button.endsWith("}")) && !(button === "{ctrl}" && this.ctrlPressed)) {
+          this.$emit("onChange", this.input + button);
+        }
+        break;
     }
   },
-  destroyed() {
+  toggleShift() {
+    const layoutName = this.keyboard.options.layoutName === "default" ? "shift" : "default";
+    this.keyboard.setOptions({ layoutName });
+  },
+  setKeyboardLayout(lang) {
+    if (this.layouts[lang]) {
+      this.keyboardLayout = this.layouts[lang];
+    } else {
+      this.keyboardLayout = this.layouts['en']; 
+    }
+  },
+  toggleFullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(err => console.error(err));
+    } else {
+      document.documentElement.requestFullscreen().catch(err => console.error(err));
+    }
+  }
+},
+
+
+
+destroyed() {
     if (this.keyboard) {
       this.keyboard.destroy();
     }
   }
+
+
+
 };
+
+
+
+
 </script>
 
 <style scoped>

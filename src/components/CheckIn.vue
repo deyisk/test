@@ -74,7 +74,7 @@
         this.$router.go(-1); 
       },
       goForward() {
-        this.$router.push({ name: 'Unterweisungen' });
+        this.$router.push({ name: 'UnterweisungComponent' });
       }
     }
   };

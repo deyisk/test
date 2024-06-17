@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import CheckIn from '@/components/CheckIn.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
-import Unterweisungen from '@/components/Unterweisungen.vue';
+import UnterweisungComponent from '@/components/UnterweisungComponent.vue';
 
 
 Vue.use(VueRouter);
@@ -22,8 +22,8 @@ const routes = [
 
   {
     path: '/unterweisungen',
-    name: 'Unterweisungen',
-    component: Unterweisungen
+    name: 'UnterweisungComponent',
+    component: UnterweisungComponent
   },
 
 
