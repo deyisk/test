@@ -51,10 +51,10 @@
               <td><img alt src="https://portal.welcomeyou.de/data/CKEditorFiles/kunde001132//Sammelplatz.png" style="width: 50px; height: 50px;"></td>
               <td>{{ $t('message.assemblyPoint') }}</td>
             </tr>
-            <tr>
+            <!-- <tr>
               <td><img alt src="https://portal.welcomeyou.de/data/CKEditorFiles/kunde001132//ErsteHilfe.png" style="width: 50px; height: 50px;"></td>
               <td>{{ $t('message.firstAidKitLocation') }}</td>
-            </tr>
+            </tr> -->
             <tr>
               <td><img alt src="https://portal.welcomeyou.de/data/CKEditorFiles/kunde001132//Rauchverbot.png" style="width: 50px; height: 50px;"></td>
               <td>{{ $t('message.noSmoking') }}</td>
@@ -178,9 +178,16 @@ export default {
       },
     };
   },
-  mounted() {
-    this.signaturePad = new SignaturePad(this.$refs.signaturePad);
+  mounted() { 
+    
+  const canvas = this.$refs.signaturePad;
+  canvas.width = canvas.offsetWidth; 
+  this.signaturePad = new SignaturePad(canvas);
   },
+
+
+
+
   methods: {
     clearSignature() {
       this.signaturePad.clear();
