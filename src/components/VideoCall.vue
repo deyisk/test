@@ -1,25 +1,26 @@
 <template>
   <div>
     <div class="header" :style="headerStyle">
-      <h1 :style="headerTitleStyle">{{ headerTitle }}</h1>
+      <h1 :style="headerTitleStyle">{{ $t('videoCall.headerTitle') }}</h1>
       <i class="fa fa-phone" :style="iconStyle" aria-hidden="true"></i>
     </div>
 
     <div v-if="showMessage" :style="showMessageStyle">
-      <h1 :style="messageTitleStyle">Vielen Dank für Ihre Unterschrift.</h1>
-      <p :style="messageParagraphStyle">Wir verbinden Sie nun mit unserem Empfang.</p>
+      <h1 :style="messageTitleStyle">{{ $t('videoCall.thankYouMessage') }}</h1>
+      <p :style="messageParagraphStyle">{{ $t('videoCall.connectingMessage') }}</p>
     </div>
     <div v-else>
-     
       <!-- Arvia Chat için gerekli HTML -->
       <div>
-    <button ref="startButton" @click="startArviaChat" style="width: 200px; height: 100px; font-size: 30px;">Start Arvia Chat</button>
-    <div ref="arviaChatContainer"></div>
-  </div>
+        <button ref="startButton" @click="startArviaChat" style="width: 200px; height: 100px; font-size: 30px;">
+          {{ $t('videoCall.startChatButton') }}
+        </button>
+        <div ref="arviaChatContainer"></div>
+      </div>
     </div>
 
     <button @click="goBack" style="margin:auto; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
-      Zurück
+      {{ $t('videoCall.backButton') }}
     </button>
   </div>
 </template>
@@ -32,7 +33,6 @@ export default {
   data() {
     return {
       showMessage: true,
-      headerTitle: 'Empfang Anrufen',
       headerStyle: {
         display: 'flex',
         alignItems: 'center',
@@ -68,8 +68,7 @@ export default {
       this.showMessage = false;
     }, 2000);
 
-   // Vue component içinde elementlere ref ile erişim
-   const startButton = this.$refs.startButton;
+    const startButton = this.$refs.startButton;
     const arviaChatContainer = this.$refs.arviaChatContainer;
 
     if (startButton && arviaChatContainer) {
@@ -79,9 +78,8 @@ export default {
         arviaChat.setRoomName("test-room-1");
         arviaChat.init(arviaChatContainer);
         arviaChat.connect();
-      });}
-
-
+      });
+    }
   },
   methods: {
     goBack() {
