@@ -182,6 +182,7 @@ export default {
     
   const canvas = this.$refs.signaturePad;
   canvas.width = canvas.offsetWidth; 
+  canvas.height = 250;
   this.signaturePad = new SignaturePad(canvas);
   },
 
