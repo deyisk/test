@@ -21,7 +21,7 @@ export default {
   name: 'CheckIn',
   components: {
     TextComponent,
-    InputComponent
+    InputComponent,
   },
   data() {
     return {
