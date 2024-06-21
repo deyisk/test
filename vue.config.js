@@ -1,15 +1,8 @@
-
-
 const { defineConfig } = require('@vue/cli-service')
 
 module.exports = defineConfig({
   transpileDependencies: true,
-
-  //publicPath: "./",
-  //publicPath: "https://development.welcomeyou.de/main/modules/registration/dist/",
-  //publicPath: "https://portal.welcomeyou.de/main/modules/registration/dist/",
-  publicPath: "https://development.welcomeyou.de/data/Screen/deyis/dist/",
-  //publicPath: "https://portal.welcomeyou.de/data/TranslationUebersicht/dist/",
+  publicPath: "/data/Screen/deyis/dist/",
   filenameHashing: false,
   pluginOptions: {
     i18n: {
@@ -34,4 +27,19 @@ module.exports = defineConfig({
       ],
     },
   },
+  chainWebpack: config => {
+    config.module
+      .rule('fonts')
+      .test(/\.(ttf|otf|eot|woff|woff2)$/)
+      .use('file-loader')
+      .loader('file-loader')
+      .tap(options => {
+        options = {
+          limit: 10000,
+          name: 'fonts/[name].[hash:7].[ext]'
+        }
+        return options
+      })
+      .end()
+  }
 });
