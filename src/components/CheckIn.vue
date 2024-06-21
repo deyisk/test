@@ -98,7 +98,7 @@ export default {
       this.inputConfig.defaultValue = input;
     },
     onKeyboardKeyPress(button) {
-      console.log("Button pressed:", button);
+      console.log("Button :", button);
       if (button === "{bksp}") {
         this.inputConfig.defaultValue = this.inputConfig.defaultValue.slice(0, -1);
       } else if (button === "{delete}") {
