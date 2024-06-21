@@ -92,6 +92,7 @@ export default {
     },
     focusInput(inputId) {
       this.isKeyboardVisible = true;
+      console.log(inputId);
     },
     onKeyboardChange(input) {
       this.inputConfig.defaultValue = input;
