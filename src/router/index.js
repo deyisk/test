@@ -4,6 +4,9 @@ import CheckIn from '@/components/CheckIn.vue';
 import HelloWorld from '@/components/HelloWorld.vue';
 import UnterweisungComponent from '@/components/UnterweisungComponent.vue';
 import VideoCall from '@/components/VideoCall.vue';
+import CheckIn2 from '@/components/CheckIn2.vue';
+
+
 
 Vue.use(VueRouter);
 
@@ -30,6 +33,15 @@ const routes = [
     name: 'VideoCall',
     component: VideoCall
   },
+
+
+  {
+    path: '/check-in2',
+    name: 'CheckIn2',
+    component: CheckIn2
+  },
+
+
 
 
 
