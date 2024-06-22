@@ -6,7 +6,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
 
 
-  publicPath: "https://development.welcomeyou.de/data/Screen/dist/",
+  publicPath: "./",
   outputDir: 'dist', 
   filenameHashing: false,
   pluginOptions: {
