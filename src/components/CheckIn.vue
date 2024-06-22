@@ -1,11 +1,14 @@
 <template>
   <div>
     <TextComponent :config="textConfig" />
+    <br>
+    <br>
     <InputComponent
       :config="inputConfig"
       @input="handleInputChange"
       v-on:focus-input="focusInput"
     />
+  
 
     <button @click="goBack" style="margin-left: -45%; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
       {{ $t('message.back') }}
@@ -46,7 +49,9 @@ export default {
         style: {
           color: 'black',
           fontSize: '44px',
-          marginLeft: '10%'
+          
+
+          marginLeft: this.$i18n.locale === 'fr' || this.$i18n.locale === 'en' ? '2%' : '10%'  
         }
       },
       inputConfig: {
@@ -114,7 +119,7 @@ export default {
       this.$router.go(-1); 
     },
     goForward() {
-      this.$router.push({ name: 'CheckIn2' });
+      this.$router.push({ name: 'UnterweisungComponent' });
     }
   }
 };

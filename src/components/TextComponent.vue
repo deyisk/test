@@ -43,6 +43,7 @@
   .second-line {
     display: block;
     margin-top: 10px;
+    text-align: left;
   }
 
   .text-line {

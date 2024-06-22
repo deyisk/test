@@ -14,34 +14,34 @@ export default {
       layouts: {
         en: {
           default: [
-            "` 1 2 3 4 5 6 7 8 9 0 - =",
+            "` 1 2 3 4 5 6 7 8 9 0 - = {delete}",
             "Tab q w e r t y u i o p {bksp}",
             "{capslock} a s d f g h j k l {enter}",
             "{shift} {ctrl} z x c v b n m , . {shift}",
-            "{space} {delete}"
+            "{space}"
           ],
           shift: [
-            "~ ! @ # $ % ^ & * ( ) _ +",
+            "~ ! @ # $ % ^ & * ( ) _ + {delete}",
             "Tab Q W E R T Y U I O P {bksp}",
             "{capslock} A S D F G H J K L {enter}",
             "{shift} {ctrl} Z X C V B N M < > {shift}",
-            "{space} {delete}"
+            "{space}"
           ]
         },
         fr: {
           default: [
-            "² & é \" ' ( § è ! ç à ) - {bksp}",
+            "² & é \" ' ( § è ! ç à ) - {bksp} {delete}",
             "Tab a z e r t y u i o p ^ $",
             "{capslock} q s d f g h j k l m ù {enter}",
             "{shift} {ctrl} < w x c v b n , ; : = {shift}",
-            "{space} {delete}"
+            "{space}"
           ],
           shift: [
-            " 1 2 3 4 5 6 7 8 9 0 ° _ {bksp}",
+            " 1 2 3 4 5 6 7 8 9 0 ° _ {bksp} {delete}",
             "Tab A Z E R T Y U I O P ¨ *",
             "{capslock} Q S D F G H J K L M % µ {enter}",
             "{shift} {ctrl} > W X C V B N ? . / + {shift}",
-            "{space} {delete}"
+            "{space}"
           ]
         },
         de: {

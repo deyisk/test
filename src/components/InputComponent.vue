@@ -127,6 +127,7 @@ input {
 .error-message {
   color: red;
   margin-top: 8px;
-  font-size: 14px;
+  font-size: 28px;
+  margin-left:100px;
 }
 </style>

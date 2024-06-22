@@ -19,9 +19,7 @@
       </div>
     </div>
 
-    <button @click="goBack" style="margin:auto; margin-top: 20px; padding: 10px 20px; font-size: 24px; background-color: #f0f0f0; border: 2px solid #ccc; border-radius: 5px; cursor: pointer;">
-      {{ $t('videoCall.backButton') }}
-    </button>
+  
   </div>
 </template>
 
@@ -91,6 +89,26 @@ export default {
       arviaChat.setRoomName("test-room-1");
       arviaChat.init(this.$refs.arviaChatContainer);
       arviaChat.connect();
+
+
+
+
+      // from .._videocall_schattdecor
+      // arviaChat = new ArviaChat('63039242ed94592a17a39ec1');
+      //   arviaChat.init("arvia.chat");
+      //   arviaChat.setRoomName("schattdecor");
+      //   arviaChat.setDynamicRoomName("Empfang");
+      //   arviaChat.setLocalMediaButtonsVisibility(false);
+      //   arviaChat.setUserName('Besucher');
+      //   arviaChat.setDefaultNotificationsEnabled(false);
+      //   arviaChat.connect();
+
+
+
+
+
+
+
     },
   },
 };
