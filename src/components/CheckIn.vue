@@ -79,7 +79,7 @@ export default {
         errorMessage: this.$t('message.errorMessage')
       },
       keyboardLayout: [
-        "1 2 3 4 5 6 7 8 9 0",
+        "esc 1 2 3 4 5 6 7 8 9 0",
         "Q W E R T Y U I O P",
         "A S D F G H J K L",
         "{shift} Z X C V B N M {bksp}",
@@ -104,16 +104,20 @@ export default {
     },
     onKeyboardKeyPress(button) {
       console.log("Button :", button);
-      if (button === "{bksp}") {
-        this.inputConfig.defaultValue = this.inputConfig.defaultValue.slice(0, -1);
-      } else if (button === "{delete}") {
-        this.inputConfig.defaultValue = '';
-      } else if (button === "{enter}") {
-        // Handle enter key press if needed
-      } else {
-        // Append the pressed button to the input value
-        this.inputConfig.defaultValue += button;
+    if (button === "esc") {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
       }
+      this.isKeyboardVisible = false; 
+    } else if (button === "{bksp}") {
+      this.inputConfig.defaultValue = this.inputConfig.defaultValue.slice(0, -1);
+    } else if (button === "{delete}") {
+      this.inputConfig.defaultValue = '';
+    } else if (button === "{enter}") {
+      console.log("test");
+    } else {
+      this.inputConfig.defaultValue += button;
+    }
     },
     goBack() {
       this.$router.go(-1); 

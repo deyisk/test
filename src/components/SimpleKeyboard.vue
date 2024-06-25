@@ -14,14 +14,14 @@ export default {
       layouts: {
         en: {
           default: [
-            "` 1 2 3 4 5 6 7 8 9 0 - = {delete}",
+            "{esc} ` 1 2 3 4 5 6 7 8 9 0 - = {delete}",
             "Tab q w e r t y u i o p {bksp}",
             "{capslock} a s d f g h j k l {enter}",
             "{shift} {ctrl} z x c v b n m , . {shift}",
             "{space}"
           ],
           shift: [
-            "~ ! @ # $ % ^ & * ( ) _ + {delete}",
+            "{esc} ~ ! @ # $ % ^ & * ( ) _ + {delete}",
             "Tab Q W E R T Y U I O P {bksp}",
             "{capslock} A S D F G H J K L {enter}",
             "{shift} {ctrl} Z X C V B N M < > {shift}",
@@ -30,14 +30,14 @@ export default {
         },
         fr: {
           default: [
-            "² & é \" ' ( § è ! ç à ) - {bksp} {delete}",
+            "{esc} ² & é \" ' ( § è ! ç à ) - {bksp} {delete}",
             "Tab a z e r t y u i o p ^ $",
             "{capslock} q s d f g h j k l m ù {enter}",
             "{shift} {ctrl} < w x c v b n , ; : = {shift}",
             "{space}"
           ],
           shift: [
-            " 1 2 3 4 5 6 7 8 9 0 ° _ {bksp} {delete}",
+            "{esc} 1 2 3 4 5 6 7 8 9 0 ° _ {bksp} {delete}",
             "Tab A Z E R T Y U I O P ¨ *",
             "{capslock} Q S D F G H J K L M % µ {enter}",
             "{shift} {ctrl} > W X C V B N ? . / + {shift}",
@@ -46,14 +46,14 @@ export default {
         },
         de: {
           default: [
-            "° 1 2 3 4 5 6 7 8 9 0 ß ´ {delete}",
+            "{esc} ° 1 2 3 4 5 6 7 8 9 0 ß ´ {delete}",
             "Tab q w e r t z u i o p ü +",
             "{capslock} a s d f g h j k l ö ä # {enter}",
             "{shift} {ctrl} < y x c v b n m , . - {shift}",
             "{space}"
           ],
           shift: [
-            "° ! \" § $ % & / ( ) = ? `",
+            "{esc} ° ! \" § $ % & / ( ) = ? `",
             "Tab Q W E R T Z U I O P Ü *",
             "{capslock} A S D F G H J K L Ö Ä ' {enter}",
             "{shift} {ctrl} > Y X C V B N M ; : _ {shift}",

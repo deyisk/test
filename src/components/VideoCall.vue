@@ -12,7 +12,7 @@
     <div v-else>
       <!-- Arvia Chat için gerekli HTML -->
       <div>
-        <button ref="startButton" @click="startArviaChat" style="width: 200px; height: 100px; font-size: 30px;">
+        <button ref="startButton" @click="redirectToOldArvia" style="width: 200px; height: 100px; font-size: 30px;">
           {{ $t('videoCall.startChatButton') }}
         </button>
         <div ref="arviaChatContainer"></div>
@@ -30,6 +30,8 @@ export default {
   name: 'VideoCall',
   data() {
     return {
+          arviaChat: null, // Global
+
       showMessage: true,
       headerStyle: {
         display: 'flex',
@@ -80,6 +82,10 @@ export default {
     }
   },
   methods: {
+    redirectToOldArvia() {
+      
+      // this.$router.push({ name: 'oldArvia' }); 
+    },
     goBack() {
       this.$router.push({ name: 'UnterweisungComponent' });
     },
