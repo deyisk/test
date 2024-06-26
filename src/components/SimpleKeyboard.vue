@@ -61,6 +61,9 @@ export default {
           ]
         }
       },
+      shiftPressed: false,
+      capsLockActive: false,
+      firstCharacter: false,
       ctrlPressed: false,
       keyboard: null 
     };
@@ -106,24 +109,48 @@ export default {
           this.$emit("onChange", this.input.slice(0, -1));
           break;
         case "{delete}":
-          this.$emit("onChange", ""); // Deletes the entire input
+          this.$emit("onChange", ""); 
+          this.firstCharacter = true;
           break;
         case "{enter}":
           this.$emit("onEnter");
+          this.firstCharacter = true;
           break;
         case "{shift}":
-        case "{capslock}":
           this.toggleShift();
           break;
+        case "{capslock}":
+          this.toggleCapsLock();
+          break;
         default:
-          if (!(button.startsWith("{") && button.endsWith("}")) && !(button === "{ctrl}" && this.ctrlPressed)) {
+          if (!(button.startsWith("{") && button.endsWith("}"))) {
+            if (this.shiftPressed) {
+              if (this.firstCharacter) {
+                button = button.toUpperCase();
+                this.firstCharacter = false;
+              } else {
+                button = button.toLowerCase();
+              }
+              this.toggleShift(); // Reset shift state to default
+            } else if (this.capsLockActive) {
+              button = button.toUpperCase();
+            } else {
+              button = button.toLowerCase();
+            }
             this.$emit("onChange", this.input + button);
           }
           break;
       }
     },
     toggleShift() {
-      const layoutName = this.keyboard.options.layoutName === "default" ? "shift" : "default";
+      this.shiftPressed = !this.shiftPressed;
+      const layoutName = this.shiftPressed ? "shift" : "default";
+      this.keyboard.setOptions({ layoutName });
+      this.firstCharacter = this.shiftPressed;
+    },
+    toggleCapsLock() {
+      this.capsLockActive = !this.capsLockActive;
+      const layoutName = this.capsLockActive ? "shift" : "default";
       this.keyboard.setOptions({ layoutName });
     },
     setKeyboardLayout(lang) {
